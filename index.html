@@ -95,13 +95,13 @@
 
          // tax
          const taxtUpdate = document.getElementById('tax').innerText;
-         const taxtConvert = parseFloat(taxtUpdate);
+         const taxtConvert = parseInt(taxtUpdate);
          const taxCalculate = posetiveSubTOtal * (15/100);
          document.getElementById('tax').innerText = taxCalculate;
 
          // Total
          const tottal = document.getElementById('toTal').innerText;
-         const tottalConvert = parseFloat(tottal);
+         const tottalConvert = parseInt(tottal);
          const tottalFinal = taxCalculate + posetiveSubTOtal;
          document.getElementById('toTal').innerText = tottalFinal;
       })
@@ -114,7 +114,7 @@
          // mobile price nagative;
          const defoultPrice = document.getElementById('mobilePriceTotal');
          const priceText = defoultPrice.innerText;
-         const DefoultPriceConvert = parseFloat(priceText);
+         const DefoultPriceConvert = parseInt(priceText);
 
          // main price nagative
          const newPrice = DefoultPriceConvert - 10000;
@@ -127,13 +127,13 @@
 
          // tax
          const taxtUpdate = document.getElementById('tax').innerText;
-         const taxtConvert = parseFloat(taxtUpdate);
+         const taxtConvert = parseInt(taxtUpdate);
          const taxCalculate = nagativeSubTOtal * (15/100);
          document.getElementById('tax').innerText = taxCalculate;
 
          // Total
          const tottal = document.getElementById('toTal').innerText;
-         const tottalConvert = parseFloat(tottal);
+         const tottalConvert = parseInt(tottal);
          const tottalFinal = taxCalculate + nagativeSubTOtal;
          document.getElementById('toTal').innerText = tottalFinal;
       })
@@ -145,25 +145,25 @@
 
          // new case price
          const newPrice = document.getElementById('casePrice').innerText;
-         const newPriceConvert = parseFloat(newPrice);
+         const newPriceConvert = parseInt(newPrice);
          const updatePrice = newPriceConvert + 60;
          document.getElementById('casePrice').innerText = updatePrice;
 
          // sub total price update
          const subTotalUpdate = document.getElementById('subtotal').innerText;
-         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const subTotalUpdateConvert = parseInt(subTotalUpdate);
          const updateSubPrice = subTotalUpdateConvert + 60;
          document.getElementById('subtotal').innerText = updateSubPrice;
 
          // tax
          const taxtUpdate = document.getElementById('tax').innerText;
-         const taxtConvert = parseFloat(taxtUpdate);
+         const taxtConvert = parseInt(taxtUpdate);
          const taxCalculate = updateSubPrice * (15/100);
          document.getElementById('tax').innerText = taxCalculate;
 
          // Total
          const tottal = document.getElementById('toTal').innerText;
-         const tottalConvert = parseFloat(tottal);
+         const tottalConvert = parseInt(tottal);
          const tottalFinal = taxCalculate + updateSubPrice;
          document.getElementById('toTal').innerText = tottalFinal;
       })
@@ -174,25 +174,25 @@
 
          // new case price
          const newPrice = document.getElementById('casePrice').innerText;
-         const newPriceConvert = parseFloat(newPrice);
+         const newPriceConvert = parseInt(newPrice);
          const updatePrice = newPriceConvert - 60;
          document.getElementById('casePrice').innerText = updatePrice;
 
          // sub total price update
          const subTotalUpdate = document.getElementById('subtotal').innerText;
-         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const subTotalUpdateConvert = parseInt(subTotalUpdate);
          const updateSubPrice = subTotalUpdateConvert - 60;
          document.getElementById('subtotal').innerText = updateSubPrice;
 
          // tax
          const taxtUpdate = document.getElementById('tax').innerText;
-         const taxtConvert = parseFloat(taxtUpdate);
+         const taxtConvert = parseInt(taxtUpdate);
          const taxCalculate = updateSubPrice * (15/100);
          document.getElementById('tax').innerText = taxCalculate;
 
          // Total
          const tottal = document.getElementById('toTal').innerText;
-         const tottalConvert = parseFloat(tottal);
+         const tottalConvert = parseInt(tottal);
          const tottalFinal = taxCalculate + updateSubPrice;
          document.getElementById('toTal').innerText = tottalFinal;
       })
@@ -205,27 +205,27 @@
       // Value update function;
       function inputConvertSatePrice(id){
          const defoultValue = document.getElementById(id).value;
-         const defoultValueConvert = parseFloat(defoultValue);
+         const defoultValueConvert = parseInt(defoultValue);
          const newValue = defoultValueConvert + 1;
          return newValue;
       }
       // nagative price convert;
       function nagativePriceConvert(id){
          const defoultValue = document.getElementById(id).value;
-         const defoultValueConvert = parseFloat(defoultValue);
+         const defoultValueConvert = parseInt(defoultValue);
          const newValue = defoultValueConvert - 1;
          return newValue;
       }
       // Sub Total price up down Function;
       function subTotalFunctionPosetive(id){
          const subTotalUpdate = document.getElementById('subtotal').innerText;
-         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const subTotalUpdateConvert = parseInt(subTotalUpdate);
          const updateSubPrice = subTotalUpdateConvert + 10000;
          return updateSubPrice;
       }
       function subTotalFunction(id){
          const subTotalUpdate = document.getElementById('subtotal').innerText;
-         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const subTotalUpdateConvert = parseInt(subTotalUpdate);
          const updateSubPrice = subTotalUpdateConvert - 10000;
          return updateSubPrice;
       }
