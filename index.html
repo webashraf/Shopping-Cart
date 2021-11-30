@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+
+                           <button id="nagativeButton" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="mobileCountValue" type="text" class="form-control text-center" value="1">
+                           <button id="positiveButton" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="mobilePriceTotal">10000</span> </h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="caseNagativeButton" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="caseInput" type="text" class="form-control text-center" value="1">
+                           <button id="casePosetiveButton" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="casePrice">60</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="subtotal">10060</span> </h5>
+                        <h5>$ <span id="tax">1509</span> </h5>
+                        <h5>$ <span id="toTal">11569</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <script>
+      // Mobile Positive button event Handler
+      document.getElementById('positiveButton').addEventListener('click', function(){
+         const mbleCountt = inputConvertSatePrice('mobileCountValue');
+         document.getElementById('mobileCountValue').value = mbleCountt;
+
+         // mobile price update;
+         const newPrice = 10000 * mbleCountt;
+         document.getElementById('mobilePriceTotal').innerText = newPrice;
+
+         // sub total price update
+         const posetiveSubTOtal = subTotalFunctionPosetive('subtotal')
+         document.getElementById('subtotal').innerText = posetiveSubTOtal;
+
+         // tax
+         const taxtUpdate = document.getElementById('tax').innerText;
+         const taxtConvert = parseFloat(taxtUpdate);
+         const taxCalculate = posetiveSubTOtal * (15/100);
+         document.getElementById('tax').innerText = taxCalculate;
+
+         // Total
+         const tottal = document.getElementById('toTal').innerText;
+         const tottalConvert = parseFloat(tottal);
+         const tottalFinal = taxCalculate + posetiveSubTOtal;
+         document.getElementById('toTal').innerText = tottalFinal;
+      })
+
+      //Mobile nagative button event handler
+      document.getElementById('nagativeButton').addEventListener('click', function(){
+         const nagativeCOuntt = nagativePriceConvert('mobileCountValue');
+         document.getElementById('mobileCountValue').value = nagativeCOuntt;
+
+         // mobile price nagative;
+         const defoultPrice = document.getElementById('mobilePriceTotal');
+         const priceText = defoultPrice.innerText;
+         const DefoultPriceConvert = parseFloat(priceText);
+
+         // main price nagative
+         const newPrice = DefoultPriceConvert - 10000;
+         document.getElementById('mobilePriceTotal').innerText = newPrice;
+
+         // sub total price update
+
+         const nagativeSubTOtal = subTotalFunction('subtotal')
+         document.getElementById('subtotal').innerText = nagativeSubTOtal;
+
+         // tax
+         const taxtUpdate = document.getElementById('tax').innerText;
+         const taxtConvert = parseFloat(taxtUpdate);
+         const taxCalculate = nagativeSubTOtal * (15/100);
+         document.getElementById('tax').innerText = taxCalculate;
+
+         // Total
+         const tottal = document.getElementById('toTal').innerText;
+         const tottalConvert = parseFloat(tottal);
+         const tottalFinal = taxCalculate + nagativeSubTOtal;
+         document.getElementById('toTal').innerText = tottalFinal;
+      })
+
+      // Case Posetive Button Event handler;
+      document.getElementById('casePosetiveButton').addEventListener('click', function(){
+         const caseCount = inputConvertSatePrice('caseInput');
+         document.getElementById('caseInput').value = caseCount;
+
+         // new case price
+         const newPrice = document.getElementById('casePrice').innerText;
+         const newPriceConvert = parseFloat(newPrice);
+         const updatePrice = newPriceConvert + 60;
+         document.getElementById('casePrice').innerText = updatePrice;
+
+         // sub total price update
+         const subTotalUpdate = document.getElementById('subtotal').innerText;
+         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const updateSubPrice = subTotalUpdateConvert + 60;
+         document.getElementById('subtotal').innerText = updateSubPrice;
+
+         // tax
+         const taxtUpdate = document.getElementById('tax').innerText;
+         const taxtConvert = parseFloat(taxtUpdate);
+         const taxCalculate = updateSubPrice * (15/100);
+         document.getElementById('tax').innerText = taxCalculate;
+
+         // Total
+         const tottal = document.getElementById('toTal').innerText;
+         const tottalConvert = parseFloat(tottal);
+         const tottalFinal = taxCalculate + updateSubPrice;
+         document.getElementById('toTal').innerText = tottalFinal;
+      })
+      // Case button nagative event handler;
+      document.getElementById('caseNagativeButton').addEventListener('click', function(){
+         const nagativeUpdateValue = nagativePriceConvert('caseInput');
+         document.getElementById('caseInput').value = nagativeUpdateValue;
+
+         // new case price
+         const newPrice = document.getElementById('casePrice').innerText;
+         const newPriceConvert = parseFloat(newPrice);
+         const updatePrice = newPriceConvert - 60;
+         document.getElementById('casePrice').innerText = updatePrice;
+
+         // sub total price update
+         const subTotalUpdate = document.getElementById('subtotal').innerText;
+         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const updateSubPrice = subTotalUpdateConvert - 60;
+         document.getElementById('subtotal').innerText = updateSubPrice;
+
+         // tax
+         const taxtUpdate = document.getElementById('tax').innerText;
+         const taxtConvert = parseFloat(taxtUpdate);
+         const taxCalculate = updateSubPrice * (15/100);
+         document.getElementById('tax').innerText = taxCalculate;
+
+         // Total
+         const tottal = document.getElementById('toTal').innerText;
+         const tottalConvert = parseFloat(tottal);
+         const tottalFinal = taxCalculate + updateSubPrice;
+         document.getElementById('toTal').innerText = tottalFinal;
+      })
+
+
+      
+      // Value update function;
+      // Value update function;
+      // Value update function;
+      // Value update function;
+      function inputConvertSatePrice(id){
+         const defoultValue = document.getElementById(id).value;
+         const defoultValueConvert = parseFloat(defoultValue);
+         const newValue = defoultValueConvert + 1;
+         return newValue;
+      }
+      // nagative price convert;
+      function nagativePriceConvert(id){
+         const defoultValue = document.getElementById(id).value;
+         const defoultValueConvert = parseFloat(defoultValue);
+         const newValue = defoultValueConvert - 1;
+         return newValue;
+      }
+      // Sub Total price up down Function;
+      function subTotalFunctionPosetive(id){
+         const subTotalUpdate = document.getElementById('subtotal').innerText;
+         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const updateSubPrice = subTotalUpdateConvert + 10000;
+         return updateSubPrice;
+      }
+      function subTotalFunction(id){
+         const subTotalUpdate = document.getElementById('subtotal').innerText;
+         const subTotalUpdateConvert = parseFloat(subTotalUpdate);
+         const updateSubPrice = subTotalUpdateConvert - 10000;
+         return updateSubPrice;
+      }
+   </script>
+</body>
+</html>
